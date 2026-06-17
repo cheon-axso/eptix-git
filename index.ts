@@ -1,8 +1,13 @@
 const ORG = "axso-ev";
 const PREFIX = "eptix-";
-const DEST = "/Users/charlesheon/Web/eptix";
 
 async function main() {
+  const DEST = process.argv[2];
+  if (!DEST) {
+    console.error("Usage: bun index.ts <destination-path>");
+    process.exit(1);
+  }
+
   console.log(`Fetching repos for org: ${ORG}`);
 
   const proc = Bun.spawn(
